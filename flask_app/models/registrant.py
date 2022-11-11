@@ -5,7 +5,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class Registrant: 
     
-    db = "login_reg_x"
+    db = "pablo_x_recipes"
 
     def __init__(self,data): 
 

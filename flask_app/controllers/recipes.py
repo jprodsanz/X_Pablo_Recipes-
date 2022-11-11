@@ -10,8 +10,10 @@ def recipes_dashboard():
     if "registrant_id" not in session:
         flash("You must be logged in to access the dashboard.")
         return redirect("/")
-    
-    registrant = Registrant.get_by_id(session["registrant_id"])
+    data = {
+        "id": session['registrant_id']
+    }
+    registrant = Registrant.get_by_id(data)
     recipes = Recipe.get_all()
 
     return render_template("dashboard.html", registrant=registrant, recipes=recipes)
@@ -24,21 +26,20 @@ def recipe_info(recipe_id):
 
 @app.route("/recipes/create")
 def recipe_create_page():
-    return render_template("create_recipe.html")
+    return render_template("create.html")
 
 @app.route("/recipes/edit/<int:recipe_id>")
 def recipe_edit_page(recipe_id):
     recipe = Recipe.get_by_id(recipe_id)
-    return render_template("edit_recipe.html", recipe=recipe)
+    return render_template("edit.html", recipe=recipe)
 
 ######## POST and ACTION METHODS ########
 
 @app.route("/recipes", methods=["POST"])
 def create_recipe():
-    valid_recipe = Recipe.create_valid_recipe(request.form)
-    if valid_recipe:
-        return redirect(f'/recipes/{valid_recipe.id}')
-    return redirect('/recipes/create')
+    if Recipe.is_valid(request.form):
+        Recipe.create_valid_recipe(request.form)
+    return redirect('/recipes/dashboard')
 
 @app.route("/recipes/<int:recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):

@@ -3,7 +3,7 @@
 <div class="container pt-5" style="max-width:420px;margin:auto;">
     <form method="post" action="/recipes">
         <fieldset class="form-outline">
-                <legend class="text-center border-bottom pb-2 mb-4 h1">Sign Up</legend>
+                <legend class="text-center border-bottom pb-2 mb-4 h1">Add Recipe</legend>
 
                 {% with messages = get_flashed_messages() %}
                     
@@ -49,8 +49,8 @@
                     <label for="no" class="form-label">No</label>
                     <input type="checkbox" name="under_30" value="0" id="no">
                 </div>
-                <input type="hidden" name="registrant_id" value="{{session['registrant_id']}}">
         </fieldset>
+        <input type="hidden" name="registrant_id" value="{{session['registrant_id']}}">
                                         <!-- Submit button -->
             <div class="form-outline d-grid gap-2 col-6 mx-auto">
                 <button type="submit" class="btn btn-primary btn-block mb-4">Add Recipe</button>
