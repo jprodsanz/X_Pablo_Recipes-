@@ -113,8 +113,8 @@ class Recipe:
                     "last_name": recipe["last_name"],
                     "email": recipe["email"],
                     "password": recipe["password"],
-                    "created_at": recipe["uc"],
-                    "updated_at": recipe["uu"]
+                    "created_at": recipe["created_at"],
+                    "updated_at": recipe["updated_at"],
                 }
             )
             recipes.append(recipe_obj)
