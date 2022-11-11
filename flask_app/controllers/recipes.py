@@ -20,7 +20,10 @@ def recipes_dashboard():
 
 @app.route("/recipes/<int:recipe_id>")
 def recipe_info(recipe_id):
-    registrant = Registrant.get_by_id(session["registrant_id"])
+    data = {
+        "registrant_id" : session['registrant_id']
+    }
+    registrant = Registrant.get_by_id(data)
     recipe = Recipe.get_by_id(recipe_id)
     return render_template("recipe_info.html", registrant=registrant, recipe=recipe)
 

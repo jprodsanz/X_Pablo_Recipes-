@@ -42,7 +42,7 @@ def login():
         flash ("Invalid Password", "login")
         return redirect('/')
     session['registrant_id'] = registrant.id
-    return redirect('/dashboard')
+    return redirect('/recipes/dashboard')
 
 @app.route('/dashboard')
 def dashboard():
