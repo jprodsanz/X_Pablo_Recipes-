@@ -26,10 +26,10 @@ class Registrant:
     def get_all(cls):
         query = "SELECT * FROM registrants;"
         results = connectToMySQL(cls.db).query_db(query)
-        users = []
+        registrants = []
         for row in results:
-            users.append( cls(row))
-        return users
+            registrants.append( cls(row))
+        return registrants
 
     @classmethod
     def get_by_email(cls,data):

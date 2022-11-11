@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container">
-    <div class="h1">Hey {{registrant.first_name}} !</div>
+    <div class="h1">Hey {{registrant.first_name}} {{registrant.last_name}} !</div>
         <div class="div">
             <p>Check out the recipes below:</p>  
         </div>
@@ -9,27 +9,36 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name </th>
-                <th scope="col">Email </th>
+                <th scope="col">Name</th>
+                <th scope="col">Under 30 min </th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
+                {% for recipe in recipes %}
                 <tr>
-                        <td>{{ registrant.id }}</td>            
-                        <td>{{ registrant.first_name }}</td>
-                        <td>{{ registrant.last_name }}</td>
-                        <td>{{ registrant.email }}</td>
+                        <td>{{ recipe.name }} by {{ recipe.registrant.first_name }}</td>            
+                        <td>{% if recipe_under_30: %}
+                            Yes
+                            {% else: %}
+                            No
+                            {% endif %}
+                        </td>
                     <td>
-                        <a class="nav-item nav-link" href="">Edit</a>
-                        <a class="nav-item nav-link" href="">Delete</a>
+                        <a class="nav-item nav-link" href="/recipes/{{recipe.id}}">View</a>
+
+                        {% if recipe.registrant.id == registrant.id %}
+                            <a class="nav-item nav-link" href="">Edit</a>
+                            <a class="nav-item nav-link" href="">Delete</a>
+                        {% endif %}
                     </td>
                 </tr>
+                {% endfor %}
         </tbody>
     </table>
     <div class="form-outline d-grid gap-2 col-6 mx-auto">
-        <a class="nav-item nav-link btn btn-outline-info mb-4" href="/">Sign Up</a>
+        <a class="nav-item nav-link btn btn-outline-info mb-4" href="/recipes/create">Add Recipe</a>
+        <a class="nav-item nav-link btn btn-outline-info mb-4" href="/logout">Sign Out</a>
     </div>
 </div>
 {% endblock content %}

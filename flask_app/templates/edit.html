@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container pt-5" style="max-width:420px;margin:auto;">
+    <form method="post" action="/recipes">
+        <fieldset class="form-outline">
+                <legend class="text-center border-bottom pb-2 mb-4 h1">Sign Up</legend>
+
+                {% with messages = get_flashed_messages() %}
+                    
+                    {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Errors, please verify</strong>
+                        {% for message in messages %}
+                            <p> {{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                                        <!-- Recipe Fields input -->
+                <div class="form-outline mb-3">
+                    <div class="form-outline">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ recipe.name }}" />
+                        <label class="form-label visually-hidden" for="name">Name</label>
+                    </div>
+                </div>
+                <div class="form-outline mb-3">
+                    <div class="form-outline">
+                        <input type="textarea" name="description" id="description" class="form-control" placeholder="Description" value="{{ recipe.description }}" />
+                        <label class="form-label visually-hidden" for="description">Description</label>
+                    </div>
+                </div>
+                <div class="form-outline mb-3">
+                    <div class="form-outline">
+                        <input type="textarea" name="instructions" id="instructions" class="form-control" placeholder="Instructions" value="{{ recipe.instructions }}" />
+                        <label class="form-label visually-hidden" for="instructions">Instructions</label>
+                    </div>
+                </div>
+                <div class="form-outline mb-3">
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="date_made" id="date_made" id="date_made" value="{{ recipe.date_made}}">
+                        <label for="date_made" class="form-label">Date Made</label>
+                    </div>
+                </div>
+                <div class="form-outline mb-3 ">
+                    <div class="form-group">
+                    <p>Under 30 mins?</p>
+                    <label for="yes" class="form-label">Yes</label>
+                    <input type="checkbox" name="under_30" value="1" id="yes">
+                    <label for="no" class="form-label">No</label>
+                    <input type="checkbox" name="under_30" value="0" id="no">
+                </div>
+                <input type="hidden" name="id" value="{{session['recipe_id']}}">
+        </fieldset>
+                                        <!-- Submit button -->
+            <div class="form-outline d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-primary btn-block mb-4">Update Recipe</button>
+            </div>
+                                        <!-- Reroute buttons -->
+            <div class="border-top pt-3 text-center">
+                <small class="text-muted">
+                    <p>Already have an account? <a class="ml-2" href="/home">Login</a><p>
+                </small>
+            </div>
+    </form>
+{% endblock content %}

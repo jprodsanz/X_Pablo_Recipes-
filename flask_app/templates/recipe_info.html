@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="flex-container">
+        <h1 class="majority-width">Welcome {{registrant.first_name}} {{registrant.last_name}}</h1>
+    </div>
+    <h2>{{recipe.name}}</h2>
+    <div class="container with-border white">
+        <div class="flex-container">
+            <p >Description:</p>
+            <p class="majority-width">{{recipe.description}}</p>
+        </div>
+        <div class="flex-container">
+            <p >Under 30 min:</p>
+            <p class="majority-width">
+                {% if recipe.under_30 == True: %}
+                    Yes
+                {% else: %}
+                    No
+                {% endif %}
+            </p>
+        </div>
+        <div class="flex-container">
+            <p >Instructions:</p>
+            <p class="majority-width"> {{recipe.instructions}}</p>
+        </div>
+        <div class="flex-container">
+            <p >Date Made:</p>
+            <p class="majority-width">{{recipe.date_made}}</p>
+        </div>
+        <div class="flex-container">
+            <p>Master Chef:</p>
+            <p class="majority-width">{{recipe.registrant.first_name}}</p>
+        </div>
+    </div>
+</div>
+<div class="form-outline d-grid gap-2 col-6 mx-auto">
+    <a class="nav-item nav-link btn btn-outline-info mb-4" href="/recipes/home">Dashboard</a>
+    <a class="nav-item nav-link btn btn-outline-info mb-4" href="/logout">Sign Out</a>
+</div>
+    {% endblock content %}
