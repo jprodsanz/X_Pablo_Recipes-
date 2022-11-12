@@ -25,7 +25,7 @@ def register():
     id = Registrant.save(data)
     session['registrant_id'] = id
 
-    return redirect('/dashboard')
+    return redirect('/recipes/dashboard')
 
 @app.route('/home')
 def home_2():

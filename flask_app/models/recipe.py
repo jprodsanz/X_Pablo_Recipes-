@@ -50,8 +50,8 @@ class Recipe:
                     "last_name": result["last_name"],
                     "password": result["password"],
                     "email": result["email"],
-                    "created_at": result["uc"],
-                    "updated_at": result["uu"]
+                    "created_at": result["created_at"],
+                    "updated_at": result["updated_at"]
                 }
             )
 

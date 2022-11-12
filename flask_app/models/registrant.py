@@ -41,8 +41,12 @@ class Registrant:
 
     @classmethod
     def get_by_id(cls,data):
+        # data = {
+        #     "id" : registrant_id,
+        # }
         query = "SELECT * FROM registrants WHERE id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query,data)
+        
         return cls(results[0])
 
     @staticmethod

@@ -8,28 +8,29 @@
     <table class="mt-5 table table-hover table-bordered text-center">
         <thead>
             <tr>
-                
                 <th scope="col">Name</th>
                 <th scope="col">Under 30 min </th>
+                <th scope="col">Posted By </th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
                 {% for recipe in recipes %}
                 <tr>
-                        <td>{{ recipe.name }} by {{ recipe.registrant.first_name }}</td>            
+                        <td>{{ recipe.name }}</td>            
                         <td>{% if recipe_under_30: %}
                             Yes
                             {% else: %}
                             No
                             {% endif %}
                         </td>
+                        <td>{{ recipe.registrant.first_name }}</td>
                     <td>
                         <a class="nav-item nav-link" href="/recipes/{{recipe.id}}">View</a>
 
                         {% if recipe.registrant.id == registrant.id %}
-                            <a class="nav-item nav-link" href="">Edit</a>
-                            <a class="nav-item nav-link" href="">Delete</a>
+                            <a class="nav-item nav-link" href="/recipes/edit/{{ recipe.id }}">Edit</a>
+                            <a class="nav-item nav-link" href="/recipes/delete/{{ recipe.id }}">Delete</a>
                         {% endif %}
                     </td>
                 </tr>

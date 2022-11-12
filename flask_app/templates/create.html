@@ -53,13 +53,14 @@
         <input type="hidden" name="registrant_id" value="{{session['registrant_id']}}">
                                         <!-- Submit button -->
             <div class="form-outline d-grid gap-2 col-6 mx-auto">
-                <button type="submit" class="btn btn-primary btn-block mb-4">Add Recipe</button>
+                <button type="submit" class="btn btn-primary btn-block mb-2">Add Recipe</button>
+            </div>
+            <div class="form-outline d-grid gap-2 col-6 mx-auto">
+                <a class="nav-item nav-link btn btn-success mb-2" href="/recipes/dashboard">Dashboard</a>
             </div>
                                         <!-- Reroute buttons -->
             <div class="border-top pt-3 text-center">
-                <small class="text-muted">
-                    <p>Already have an account? <a class="ml-2" href="/home">Login</a><p>
-                </small>
+                <!-- <small class="text-muted"></small> -->
             </div>
     </form>
 {% endblock content %}
