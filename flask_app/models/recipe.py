@@ -85,6 +85,7 @@ class Recipe:
                     SET name = %(name)s, description = %(description)s, instructions = %(instructions)s, date_made=%(date_made)s, under_30 = %(under_30)s
                     WHERE id = %(id)s;"""
         result = connectToMySQL(DB).query_db(query,recipe_dict)
+        print(result,"#"*60)
         recipe = cls.get_by_id(recipe_dict["id"])
         
         return recipe

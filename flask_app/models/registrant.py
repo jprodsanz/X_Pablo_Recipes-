@@ -53,7 +53,7 @@ class Registrant:
     def validate_register(registrant):
         is_valid = True
         query = "SELECT * FROM registrants WHERE email = %(email)s;"
-        results = connectToMySQL("login_reg_x").query_db(query,registrant)
+        results = connectToMySQL("pablo_x_recipes").query_db(query,registrant)
         if len(results) >= 1:
             flash("Email already taken.","register")
             is_valid=False

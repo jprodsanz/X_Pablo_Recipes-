@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container pt-5" style="max-width:420px;margin:auto;">
-    <form method="post" action="/recipes">
+    <form method="post" action="/recipes/{{recipe.id}}">
         <fieldset class="form-outline">
                 <legend class="text-center border-bottom pb-2 mb-4 h1">Sign Up</legend>
 
@@ -53,13 +53,13 @@
         </fieldset>
                                         <!-- Submit button -->
             <div class="form-outline d-grid gap-2 col-6 mx-auto">
-                <button type="submit" class="btn btn-primary btn-block mb-4">Update Recipe</button>
+                <button type="submit" class="btn btn-outline-info btn-block mb-4">Update Recipe</button>
             </div>
                                         <!-- Reroute buttons -->
             <div class="border-top pt-3 text-center">
-                <small class="text-muted">
+                <!-- <small class="text-muted">
                     <p>Already have an account? <a class="ml-2" href="/home">Login</a><p>
-                </small>
+                </small> -->
             </div>
     </form>
 {% endblock content %}

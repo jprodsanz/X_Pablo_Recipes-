@@ -39,6 +39,7 @@ def recipe_create_page():
 
 @app.route("/recipes/edit/<int:recipe_id>")
 def recipe_edit_page(recipe_id):
+    session['recipe_id'] = recipe_id
     recipe = Recipe.get_by_id(recipe_id)
     return render_template("edit.html", recipe=recipe)
 
@@ -52,7 +53,8 @@ def create_recipe():
 
 @app.route("/recipes/<int:recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
-
+    print(request.form,'*'*60)
+    print(session['registrant_id'])
     valid_recipe = Recipe.update_recipe(request.form, session["registrant_id"])
 
     if not valid_recipe:
